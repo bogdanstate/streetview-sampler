@@ -5,12 +5,12 @@ I am providing code in this repository to you under an open source license. Beca
 
 How to install:
 
-1. Clone this repository:
+1. Create a directory in which to install required packages:
 ```
-git clone https://github.com/bogdanstate/streetview-sampler.git
+mkdir streetviewSampler
 ```
 
-2. In the directory in which `streetview-sampler` was cloned, create and activate a virtualenv to ensure we're using Python 2.7:
+2. In the new directory, create and activate a virtualenv to ensure we're using Python 2.7:
 ```
 virtualenv -p python2.7 env
 source env/bin/activate
@@ -29,4 +29,9 @@ pip install requests pillow
 5. Update `PYTHONPATH` environment variable to pick up virtualenv packages:
 ```
 export PYTHONPATH=env/lib/python2.7/site-packages
+```
+
+6. Start R from your installation directory and call:
+```
+devtools::install_github('bogdanstate/streetview-sampler/streetviewSampler')
 ```
