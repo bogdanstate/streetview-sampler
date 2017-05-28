@@ -31,7 +31,23 @@ pip install requests pillow
 export PYTHONPATH=env/lib/python2.7/site-packages
 ```
 
-6. Start R from your installation directory and call:
+6. Create R site library and point R to it:
+```
+mkdir -p env/lib/R/site-library
+export R_LIBS=env/lib/R/site-library
+```
+
+7. Start R from your installation directory and install required packages:
+```
+devtools::install_github("rstudio/reticulate")
+install.packages('maptools')
+install.packages('rgeos')
+install.packages('rgdal')
+install.packages('spatialEco')
+install.packages('data.table')
+```
+
+8. You should now be able to install the streetview-sampler package from github:
 ```
 devtools::install_github('bogdanstate/streetview-sampler/streetviewSampler')
 ```
