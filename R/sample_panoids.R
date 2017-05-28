@@ -6,7 +6,7 @@ require('parallel')
 require('data.table')
 require('reticulate')
 
-streetview <- reticulate::import_from_path("streetview", getwd()) 
+streetview <- reticulate::import("streetview") 
 
 #' Draw random sample of GoogleStreetview Panoids
 #'
