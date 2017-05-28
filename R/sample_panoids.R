@@ -6,8 +6,6 @@ require('parallel')
 require('data.table')
 require('reticulate')
 
-streetview <- reticulate::import("streetview") 
-
 #' Draw random sample of GoogleStreetview Panoids
 #'
 #' This function draws a random sample of GoogleStreetviewPanoids from a provided
