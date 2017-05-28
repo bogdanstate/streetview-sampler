@@ -1,0 +1,10 @@
+Package: streetviewSampler
+Title: Sample Streetview Images On A Road Network
+Version: 0.0.1
+Authors@R: person("Bogdan", "State", email = "bogdanstate@gmail.com", role = c("aut", "cre"))
+Description: Given a road network (provided as a SpatialLinesDataFrame), sample a set of Google Streetview images, using a random or regular sampling frame, as provided by the spatialEco package.
+Depends: R (>= 3.4.0)
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1.9000
