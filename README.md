@@ -75,6 +75,7 @@ sldf <- readOGR('ScenicHwys2014', 'ScenicHwys2014')
 library('parallel')
 library('data.table')
 library('spatialEco')
+library('streetviewSampler')
 panoids <- sample_panoids(sldf, mc.cores=4, type='random', n=1)
 head(panoids)
 ```
