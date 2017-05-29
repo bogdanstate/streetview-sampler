@@ -8,6 +8,7 @@ I am providing code in this repository to you under an open source license. Beca
 1. Create a directory in which to install required packages:
 ```
 mkdir streetviewSampler
+cd streetviewSampler
 ```
 
 2. In the new directory, create and activate a virtualenv to ensure we're using Python 2.7:
@@ -18,7 +19,7 @@ source env/bin/activate
 
 3. Clone the robolyst/streetview package for interacting with the Streetview API:
 ```
-git clone https://github.com/robolyst/streetview.git env/lib/python2.7/site-packages
+git clone https://github.com/robolyst/streetview.git env/lib/python2.7/site-packages/streetview
 ```
 
 4. Install other required pip modules:
@@ -49,7 +50,7 @@ install.packages('data.table')
 
 8. Make sure virtualenv site packages are the first ones to be considered by Python by running this command from your R environment.
 ```
-py_eval('sys.path.insert(0, "env/lib/python2.7/site-packages")')
+reticulate::py_eval('sys.path.insert(0, "env/lib/python2.7/site-packages")')
 ```
 
 9. Load the streetview module into R:
@@ -70,5 +71,16 @@ library('rgdal')
 system("wget http://www.dot.ca.gov/hq/tsip/gis/datalibrary/zip/highway/ScenicHwys2014.zip")
 system("unzip ScenicHwys2014.zip -d ScenicHwys2014")
 sldf <- readOGR('ScenicHwys2014', 'ScenicHwys2014')
+
+library('parallel')
+library('data.table')
+library('spatialEco')
+panoids <- sample_panoids(sldf[1:10,], mc.cores=4, type='random', n=1)
+head(panoids)
 ```
 
+The result is a table containing information about:
+- the sampled lat/lons from the street network.
+- the resolved lat/lons from the Google Streetview metadata API endpoint.
+- the panoids (which you can use to download Streetview images with an R package like [googleway](https://cran.r-project.org/web/packages/googleway/index.html), or using [robolyst/streetview](https://github.com/robolyst/streetview).
+- whatever other data was contained in the SpatialLinesDataFrame object you provided.
