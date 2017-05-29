@@ -27,6 +27,7 @@ require('reticulate')
 #'   \item{"sampled_lat"}{Latitude of sampled point (against which Streetview API was queried).}
 #'   \item{"sampled_lon"}{Longitude of sampled point (against which Streetview API was queried).}
 #' }
+#' @export
 
 sample_panoids <- function(sldf, mc.cores=1, ...) {
   # wrapper to the sample.line call for the i-th line in the provided
