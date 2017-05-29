@@ -67,6 +67,9 @@ sample_panoids <- function(sldf, mc.cores=1, ...) {
           }
         }, error=function(e) {
           print('Problem encountered with panoid data:')
+          print(e)
+          print(is.null(panoid.data))
+          print(ncol(panoid.data))
           print(panoid.data)
         })
       },
