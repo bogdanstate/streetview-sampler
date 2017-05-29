@@ -41,7 +41,7 @@ sample_panoids <- function(sldf, mc.cores=1, ...) {
   }
   # for every point in the SLDF, get a list of sample points
   res <- mclapply(1:nrow(sldf), function(i) {
-    spdf <- sample_points(i, sldf)
+    spdf <- sample_points(i, sldf, ...)
     if (is.null(spdf)) {
       return(list())
     }
