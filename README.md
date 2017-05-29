@@ -41,11 +41,6 @@ export R_LIBS=env/lib/R/site-library
 7. Start R from your installation directory and install required packages:
 ```
 devtools::install_github("rstudio/reticulate")
-install.packages('maptools')
-install.packages('rgeos')
-install.packages('rgdal')
-install.packages('spatialEco')
-install.packages('data.table')
 ```
 
 8. Make sure virtualenv site packages are the first ones to be considered by Python by running this command from your R environment.
@@ -72,9 +67,6 @@ system("wget http://www.dot.ca.gov/hq/tsip/gis/datalibrary/zip/highway/ScenicHwy
 system("unzip ScenicHwys2014.zip -d ScenicHwys2014")
 sldf <- readOGR('ScenicHwys2014', 'ScenicHwys2014')
 
-library('parallel')
-library('data.table')
-library('spatialEco')
 library('streetviewSampler')
 panoids <- sample_panoids(sldf, mc.cores=4, type='random', n=1)
 head(panoids)
