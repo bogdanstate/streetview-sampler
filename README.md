@@ -75,7 +75,7 @@ sldf <- readOGR('ScenicHwys2014', 'ScenicHwys2014')
 library('parallel')
 library('data.table')
 library('spatialEco')
-panoids <- sample_panoids(sldf[1:10,], mc.cores=4, type='random', n=1)
+panoids <- sample_panoids(sldf, mc.cores=4, type='random', n=1)
 head(panoids)
 ```
 
@@ -84,3 +84,21 @@ The result is a table containing information about:
 - the resolved lat/lons from the Google Streetview metadata API endpoint.
 - the panoids (which you can use to download Streetview images with an R package like [googleway](https://cran.r-project.org/web/packages/googleway/index.html), or using [robolyst/streetview](https://github.com/robolyst/streetview).
 - whatever other data was contained in the SpatialLinesDataFrame object you provided.
+
+## Visualization
+
+To see where the sampled points are located, type the following into your R console (after having executed the previous commands):
+
+```
+system("wget http://www.dot.ca.gov/hq/tsip/gis/datalibrary/zip/highway/shn2016v2_Segments.zip")
+system("unzip shn2016v2_Segments.zip -d shn2016v2_Segments")
+roads <- readOGR('shn2016v2_Segments', 'shn2016v2_Segments')
+plot(roads, col='gray')
+plot(sldf, add=T, col='black')
+sp <- SpatialPointsDataFrame(panoids[,.(lon, lat)], panoids)
+plot(sp, add=T, col='red')
+```
+
+The visualization should look something like this:
+
+![Sampled Points from California Scenic Roads](https://github.com/bogdanstate/streetview-sampler/blob/master/cal_scenic.png)
