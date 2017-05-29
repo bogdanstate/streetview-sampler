@@ -59,9 +59,14 @@ sample_panoids <- function(sldf, mc.cores=1, ...) {
     }))})
     panoids <- mapply(
       function(panoid.data, j) {
-        panoid.data[,sampled_lat:=spdf@coords[j,1]]
-        panoid.data[,sampled_lon:=spdf@coords[j,2]]
-        panoid.data[,names(spdf@data):=spdf@data]
+        #tryCatch({
+        if (!is.null(panoid.data) && ncol(panoid.data) > 0) {
+          panoid.data[,sampled_lat:=spdf@coords[j,1]]
+          panoid.data[,sampled_lon:=spdf@coords[j,2]]
+          panoid.data[,names(spdf@data):=spdf@data]
+        }
+        #}, error=function(e) {print('Panoid data:')
+        #                      print(panoid.data)})
       },
       panoids,
       1:nrow(spdf),
