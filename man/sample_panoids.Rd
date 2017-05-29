@@ -13,6 +13,18 @@ sample_panoids(sldf, mc.cores = 1, ...)
 
 \item{...}{additional params to be passed to the spatialEco::sample.line.}
 }
+\value{
+a SpatialPointsDataFrame object containing the following columns:
+\itemize{
+  \item{"panoid"}{Google Streetview PanoID obtained from Streetview metadata API.}
+  \item{"lat"}{Latitude associated with the PanoID (returned by Streetview metadata API).}
+  \item{"lon"}{Longitude associated with the PanoID (returned by Streetview metadata API).}
+  \item{"month"}{Month during which the image associated with the PanoID was taken. Can be NA.}
+  \item{"year"}{Year during which the image associated with the PanoID was taken. Can be NA.}
+  \item{"sampled_lat"}{Latitude of sampled point (against which Streetview API was queried).}
+  \item{"sampled_lon"}{Longitude of sampled point (against which Streetview API was queried).}
+}
+}
 \description{
 This function draws a random sample of GoogleStreetviewPanoids from a provided
 SpatialLinesDataFrame object, usually constructed from the shapefile of a road

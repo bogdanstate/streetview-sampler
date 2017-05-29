@@ -26,6 +26,7 @@ require('reticulate')
 #'   \item{"year"}{Year during which the image associated with the PanoID was taken. Can be NA.}
 #'   \item{"sampled_lat"}{Latitude of sampled point (against which Streetview API was queried).}
 #'   \item{"sampled_lon"}{Longitude of sampled point (against which Streetview API was queried).}
+#' }
 
 sample_panoids <- function(sldf, mc.cores=1, ...) {
   # wrapper to the sample.line call for the i-th line in the provided
